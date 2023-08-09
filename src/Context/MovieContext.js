@@ -13,6 +13,8 @@ export function MovieProvider({ children }) {
   const randomDecimal = Math.random();
   const random = Math.floor(randomDecimal * 20) + 1;
 
+  const token = localStorage.getItem("accessToken");
+
   const fetchHomeMovies = () => {
     const options = {
       method: "GET",
@@ -26,8 +28,7 @@ export function MovieProvider({ children }) {
       },
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -49,8 +50,7 @@ export function MovieProvider({ children }) {
       params: { language: "en-US" },
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
+        Authorization: `Bearer ${token}`,
       },
     };
 

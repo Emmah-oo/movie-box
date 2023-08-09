@@ -14,18 +14,11 @@ const Home = () => {
     baseImageUrl,
   } = useContext(MovieContext);
 
-  // const moviesWithGenres = homeMovie.map((movie) => {
-  //   const matchingGenres = movie.genre_ids?.map((genreId) => {
-  //     const matchingGenre = genres?.find((genre) => genre.id === genreId);
-  //     return matchingGenre ? matchingGenre.name : null;
-  //   });
-  //   return {
-  //     ...movie,
-  //     genres: matchingGenres,
-  //   };
-  // });
-
-  // console.log(moviesWithGenres);
+  const matchingGenres = homeMovie?.genre_ids?.map((genreId) => {
+    const matchingGenre = genres.find((genre) => genre.id === genreId);
+    return matchingGenre ? matchingGenre.name : null;
+  });
+  console.log(matchingGenres);
 
   useEffect(() => {
     fetchHomeMovies();
@@ -50,6 +43,13 @@ const Home = () => {
           <div className="flex gap-2">
             <img src={Imdb} alt="" />
             <h1 className="text-white">{homeMovie.vote_average}</h1>
+          </div>
+          <div className="flex gap-2">
+            {matchingGenres?.map((genre, index) => (
+              <h1 className="text-white" key={index}>
+                {genre + "."}
+              </h1>
+            ))}
           </div>
           <h1 className="text-white font-medium text-[1rem] max-w-[50%]">
             {homeMovie?.overview}
