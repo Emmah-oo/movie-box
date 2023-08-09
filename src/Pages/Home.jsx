@@ -18,7 +18,6 @@ const Home = () => {
     const matchingGenre = genres.find((genre) => genre.id === genreId);
     return matchingGenre ? matchingGenre.name : null;
   });
-  console.log(matchingGenres);
 
   useEffect(() => {
     fetchHomeMovies();
@@ -59,7 +58,9 @@ const Home = () => {
       <h1 className="px-[6rem] text-3xl font-semibold">Trending</h1>
       <div className="grid grid-cols-4 gap-[4rem] px-[6rem]">
         {trendingMovie &&
-          trendingMovie.map((movie) => <MovieCard movie={movie} />)}
+          trendingMovie.map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
       </div>
     </div>
   );
