@@ -1,10 +1,30 @@
-import React, { useEffect, useContext } from "react";
-import MovieContext from "../Context/MovieContext";
+import React, { useEffect, useState } from "react";
+
 import MovieCard from "../Components/MovieCard";
+import axios from "axios";
 
 const Upcoming = () => {
-  const { upcomingMovies, getUpcoming } = useContext(MovieContext);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+
   useEffect(() => {
+    const getUpcoming = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.themoviedb.org/3/movie/upcoming",
+          {
+            params: { language: "en-US", page: "1" },
+            headers: {
+              accept: "application/json",
+              Authorization: process.env.REACT_APP_API_KEY,
+            },
+          }
+        );
+        setUpcomingMovies(response.data.results);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     getUpcoming();
   }, []);
   return (

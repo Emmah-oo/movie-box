@@ -1,166 +1,22 @@
-import axios from "axios";
-import { useEffect, useState, createContext } from "react";
+import { createContext, useState } from "react";
 
 const MovieContext = createContext();
 
 export function MovieProvider({ children }) {
-  const [homeMovie, setHomeMovie] = useState([]);
-
-  const [trendingMovie, setTrendingMovie] = useState([]);
-
-  const [popularMovies, setPopularMovies] = useState([]);
-
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
-
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
-
   const baseImageUrl = "https://image.tmdb.org/t/p/original";
+
+  const [page, setPage] = useState(1);
 
   const randomDecimal = Math.random();
   const random = Math.floor(randomDecimal * 20) + 1;
 
-  const token = localStorage.getItem("accessToken");
-
-  const fetchHomeMovies = () => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/discover/movie",
-      params: {
-        include_adult: "false",
-        include_video: "true",
-        language: "en-US",
-        page: 1,
-        sort_by: "popularity.desc",
-      },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setHomeMovie(response.data.results[random]);
-        // console.log(response.data.results[random]);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-
-  const getTrending = () => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/trending/all/day",
-      params: { language: "en-US" },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        // console.log(response.data.results);
-        setTrendingMovie(response.data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-
-  const getPopular = () => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/movie/popular",
-      params: { language: "en-US", page: random },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setPopularMovies(response.data.results);
-        console.log(response.data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-
-  const getTopRated = () => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/movie/top_rated",
-      params: { language: "en-US", page: "1" },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data.results);
-        setTopRatedMovies(response.data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-
-  const getUpcoming = () => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/movie/upcoming",
-      params: { language: "en-US", page: "1" },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzk5ZWIyOTRkZDhiNDBhNDg1NTk3NmM0ZjVlYjIyYSIsInN1YiI6IjY0Y2EzZjZmZGQ4M2ZhMDBmZjUxODEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CoTAs4nhvVWLzTXbtt-fYiJ_HfefqjkBe36Ee2hMzW8",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setUpcomingMovies(response.data.results);
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-
   return (
     <MovieContext.Provider
       value={{
-        fetchHomeMovies,
-        homeMovie,
-        setHomeMovie,
-        getTrending,
-        trendingMovie,
-        setTrendingMovie,
         baseImageUrl,
-        popularMovies,
-        setPopularMovies,
-        getPopular,
-        setTopRatedMovies,
-        topRatedMovies,
-        getTopRated,
-        upcomingMovies,
-        setUpcomingMovies,
-        getUpcoming,
+        random,
+        page,
+        setPage,
       }}
     >
       {children}
