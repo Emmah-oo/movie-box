@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
     return matchingGenre ? matchingGenre.name : null;
   });
 
-  console.log(matchingGenres);
+  // console.log(matchingGenres);
 
   return (
     <div className="mt-[2rem] cursor-pointer hover:scale-105 transition-all">
