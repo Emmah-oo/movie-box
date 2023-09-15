@@ -5,10 +5,12 @@ import Home from "./Pages/Home";
 import Popular from "./Pages/Popular";
 import TopRated from "./Pages/TopRated";
 import Upcoming from "./Pages/Upcoming";
+import SearchPage from "./Pages/SearchPage";
+import MovieDetails from "./Components/MovieDetails";
 
 function App() {
   return (
-    <div className="App">
+    <div className="mb-[5rem]">
       <MovieProvider>
         <Navbar />
         <Routes>
@@ -16,6 +18,8 @@ function App() {
           <Route path="/popular" element={<Popular />} />
           <Route path="/toprated" element={<TopRated />} />
           <Route path="/upcoming" element={<Upcoming />} />
+          <Route path="/search/:searchTerm" element={<SearchPage />} />
+          <Route path="/movie/:movieId" element={<MovieDetails />} />
         </Routes>
       </MovieProvider>
     </div>

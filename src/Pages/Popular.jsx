@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import MovieCard from "../Components/MovieCard";
 import axios from "axios";
 import Pagination from "../Components/Pagination";
+import MovieContext from "../Context/MovieContext";
 
 const Popular = () => {
   const [popularMovies, setPopularMovies] = useState([]);
+  const { page } = useContext(MovieContext);
 
   useEffect(() => {
     const getPopular = async () => {
@@ -13,7 +15,7 @@ const Popular = () => {
         const response = await axios.get(
           "https://api.themoviedb.org/3/movie/popular",
           {
-            params: { language: "en-US", page: 1 },
+            params: { language: "en-US", page },
             headers: {
               accept: "application/json",
               Authorization: process.env.REACT_APP_API_KEY,
@@ -27,7 +29,7 @@ const Popular = () => {
       }
     };
     getPopular();
-  }, []);
+  }, [page, setPopularMovies]);
 
   return (
     <div className="pt-[10vh] ">

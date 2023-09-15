@@ -38,7 +38,7 @@ const Home = () => {
         );
         setHomeMovie(response.data.results[random]);
         // console.log(homeMovie);
-        console.log(response.data.results);
+        // console.log(response.data.results);
       } catch (error) {
         console.error(error);
       }
@@ -62,6 +62,7 @@ const Home = () => {
         );
 
         setTrendingMovie(response.data.results);
+        console.log(response.data.results);
       } catch (error) {
         console.error(error);
       }

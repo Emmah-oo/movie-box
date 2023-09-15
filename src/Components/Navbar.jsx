@@ -1,9 +1,23 @@
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [navColor, setNavColor] = useState(false);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (searchTerm) {
+      navigate(`/search/${searchTerm}`);
+      setSearchTerm("");
+    }
+  };
+
   const handleNavColor = () => {
     if (window.scrollY > 10) {
       setNavColor(true);
@@ -11,8 +25,6 @@ const Navbar = () => {
       setNavColor(false);
     }
   };
-
-  // const handleNavClick = () => setNav(false)
 
   window.addEventListener("scroll", handleNavColor);
   return (
@@ -38,15 +50,22 @@ const Navbar = () => {
           </Link>
         </ul>
       </nav>
-      <div className="flex border-2 rounded-md px-2 py-1">
+      <form
+        className="flex border-2 rounded-md px-2 py-1"
+        onSubmit={handleSubmit}
+      >
         <input
           type="search"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
           name="search"
           placeholder="search..."
           className="outline-none bg-transparent text-white"
         />
         <CiSearch className="text-2xl cursor-pointer text-white" />
-      </div>
+      </form>
     </div>
   );
 };
