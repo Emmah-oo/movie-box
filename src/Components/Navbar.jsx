@@ -33,7 +33,9 @@ const Navbar = () => {
         navColor ? "bg-black" : ""
       }`}
     >
-      <h1 className="text-white">MovieBox.</h1>
+      <Link to="/">
+        <h1 className="text-white">MovieBox.</h1>
+      </Link>
       <nav>
         <ul className="flex gap-4">
           <Link to="/">

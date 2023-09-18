@@ -3,6 +3,7 @@ import MovieContext from "../Context/MovieContext";
 import { genres } from "../Utils/data";
 import Imdb from "../Img/Imdb.svg";
 import { Link } from "react-router-dom";
+import save from "../Img/save.svg";
 
 const MovieCard = ({ movie }) => {
   const { baseImageUrl } = useContext(MovieContext);
@@ -17,7 +18,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div className="mt-[2rem] cursor-pointer hover:scale-105 transition-all">
-      <Link to={`/${movie.media_type || 'movie'}/${movie.id}`}>
+      <Link to={`/${movie.media_type || "movie"}/${movie.id}`}>
         {movie && (
           <div>
             <img
@@ -41,8 +42,10 @@ const MovieCard = ({ movie }) => {
                 </h1>
                 <h1>{movie.release_date}</h1>
               </div>
-              <h1 className="font-bold text-2xl">{movie.title}</h1>
-
+              <div className="flex justify-between">
+                <h1 className="font-bold text-2xl">{movie.title}</h1>
+                <img src={save} alt="save" className="cursor-pointer" />
+              </div>
               <div className="flex gap-2">
                 {matchingGenres?.map((genre, index) => (
                   <h1 className="text-black" key={index}>
