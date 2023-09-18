@@ -51,7 +51,7 @@ const Navbar = () => {
         </ul>
       </nav>
       <form
-        className="flex border-2 rounded-md px-2 py-1"
+        className="flex border rounded-md px-2 py-1 bg-transparent"
         onSubmit={handleSubmit}
       >
         <input

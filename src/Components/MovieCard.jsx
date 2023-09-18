@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div className="mt-[2rem] cursor-pointer hover:scale-105 transition-all">
-      <Link to={`/${movie.media_type}/${movie.id}`}>
+      <Link to={`/${movie.media_type || 'movie'}/${movie.id}`}>
         {movie && (
           <div>
             <img

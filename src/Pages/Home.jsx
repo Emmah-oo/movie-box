@@ -82,7 +82,7 @@ const Home = () => {
           <h1 className="text-white font-bold text-[2rem]">
             {homeMovie?.title}
           </h1>
-          <h1 className="text-[1.5rem] text-gray-400 font-medium">
+          <h1 className="text-[1.5rem] text-white font-medium">
             {homeMovie?.release_date}
           </h1>
           <div className="flex gap-2">
