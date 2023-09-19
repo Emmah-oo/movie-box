@@ -62,15 +62,15 @@ const MovieDetails = () => {
             <h1>Runtime: {details.runtime} mins</h1>
             <div className="flex gap-2">
               <h1 className="font-bold">Genre:</h1>
-              {details.genres?.map((genre) => (
-                <h1>{genre.name}</h1>
+              {details.genres?.map((genre, i) => (
+                <h1 key={i}>{genre.name}</h1>
               ))}
             </div>
             <div>
               <div className="mt-3">
                 <h1 className="font-bold">Production Companies</h1>
-                {details.production_companies?.map((company) => (
-                  <h1>{company.name}</h1>
+                {details.production_companies?.map((company, i) => (
+                  <h1 key={i}>{company.name}</h1>
                 ))}
               </div>
             </div>

@@ -7,6 +7,31 @@ export function MovieProvider({ children }) {
 
   const [page, setPage] = useState(1);
 
+  const [savedMovies, setSavedMovies] = useState([]);
+
+  const [isSaved, setIsSaved] = useState(false)
+
+  const handleSave = (movie) => {
+    // Check if the movie is already in the savedMovies array
+    const movieIndex = savedMovies.findIndex((savedMovie) => savedMovie.id === movie.id);
+  
+    if (movieIndex !== -1) {
+      // If it's already saved, remove it from the array
+      const updatedMovies = [...savedMovies];
+      updatedMovies.splice(movieIndex, 1);
+      setSavedMovies(updatedMovies);
+      localStorage.setItem('savedMovies', JSON.stringify(updatedMovies));
+      setIsSaved(false)
+    } else {
+      // If it's not saved, add it to the array
+      const updatedMovies = [...savedMovies, movie];
+      setSavedMovies(updatedMovies);
+      localStorage.setItem('savedMovies', JSON.stringify(updatedMovies));
+      setIsSaved(true)
+    }
+  };
+  
+
   const randomDecimal = Math.random();
   const random = Math.floor(randomDecimal * 20) + 1;
 
@@ -17,6 +42,11 @@ export function MovieProvider({ children }) {
         random,
         page,
         setPage,
+        isSaved,
+        setIsSaved,
+        savedMovies,
+        setSavedMovies,
+        handleSave
       }}
     >
       {children}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
+import heart from "../Img/heart.png";
 
 const Navbar = () => {
   const [navColor, setNavColor] = useState(false);
@@ -52,22 +53,27 @@ const Navbar = () => {
           </Link>
         </ul>
       </nav>
-      <form
-        className="flex border rounded-md px-2 py-1 bg-transparent"
-        onSubmit={handleSubmit}
-      >
-        <input
-          type="search"
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-          name="search"
-          placeholder="search..."
-          className="outline-none bg-transparent text-white"
-        />
-        <CiSearch className="text-2xl cursor-pointer text-white" />
-      </form>
+      <div className="flex items-center justify-center gap-5">
+        <form
+          className="flex border rounded-md px-2 py-1 bg-transparent"
+          onSubmit={handleSubmit}
+        >
+          <input
+            type="search"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            name="search"
+            placeholder="search..."
+            className="outline-none bg-transparent text-white"
+          />
+          <CiSearch className="text-2xl cursor-pointer text-white" />
+        </form>
+        <Link to='/favorite'>
+        <img src={heart} alt="" className="w-[70%] cursor-pointer" />
+        </Link>
+      </div>
     </div>
   );
 };

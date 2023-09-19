@@ -8,6 +8,7 @@ import Upcoming from "./Pages/Upcoming";
 import SearchPage from "./Pages/SearchPage";
 import MovieDetails from "./Components/MovieDetails";
 import TvDetails from "./Components/TvDetails";
+import Favorite from "./Pages/Favorite";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/search/:searchTerm" element={<SearchPage />} />
           <Route path="/movie/:movieId" element={<MovieDetails />} />
           <Route path="/tv/:tvId" element={<TvDetails />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
       </MovieProvider>
     </div>
