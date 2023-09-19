@@ -46,15 +46,15 @@ const MovieDetails = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-2 min-h-[85vh] items-center justify-center gap-10">
+        <div className="grid lg:grid-cols-2 min-h-[70vh] lg:pt-[8rem] items-center justify-center gap-10">
           <div>
             <img
               src={`${baseImageUrl}${details?.backdrop_path}`}
               alt=""
-              className="w-[100%] border rounded-lg"
+              className="w-[100%] border rounded-lg md:mt-[5rem] "
             />
           </div>
-          <div>
+          <div className="">
             <h1 className="text-2xl font-bold mb-2">
               {details.original_title}
             </h1>
@@ -78,9 +78,9 @@ const MovieDetails = () => {
         </div>
       )}
 
-      <div>
+      <div className="pt-5">
         <h1 className="text-3xl font-bold">Similar Movies</h1>
-        <div className="grid grid-cols-4 gap-x-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-[4rem]">
           {similar.map((movie, i) => (
             <MovieCard movie={movie} key={i} />
           ))}

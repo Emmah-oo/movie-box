@@ -107,7 +107,7 @@ const Home = () => {
                   alt=""
                   className="w-[100%] darkened-image"
                 />
-                <div className="absolute top-[50%] px-[6rem] flex flex-col gap-3 items-start">
+                <div className="absolute sm:[10%] md:top-[30%] lg:top-[50%] px-[6rem] flex flex-col gap-3 items-start">
                   <h1 className="text-white font-bold text-[2rem]">
                     {homeMovie?.title}
                   </h1>
@@ -137,7 +137,7 @@ const Home = () => {
 
       <h1 className="px-[6rem] text-3xl font-semibold">Trending</h1>
       <Pagination />
-      <div className="grid grid-cols-4 gap-[4rem] px-[6rem]">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[4rem] px-[2rem] lg:px-[4rem]">
         {trendingMovie &&
           trendingMovie.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />

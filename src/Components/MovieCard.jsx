@@ -7,7 +7,7 @@ import save from "../Img/save.svg";
 import save2 from "../Img/save-2.svg";
 
 const MovieCard = ({ movie }) => {
-  const { baseImageUrl, isSaved, handleSave } = useContext(MovieContext);
+  const { baseImageUrl, handleSave } = useContext(MovieContext);
 
   //Iterate over each ID in the movie arr, then for each of the find the id that matches with the ID from the genre data
   const matchingGenres = movie?.genre_ids?.map((genreId) => {
@@ -15,6 +15,12 @@ const MovieCard = ({ movie }) => {
     return matchingGenre ? matchingGenre.name : null;
   });
 
+  const [isSaved, setIsSaved] = useState(false);
+
+  const saveMovies = () => {
+    handleSave(movie);
+    setIsSaved(!isSaved);
+  };
   // console.log(matchingGenres);
 
   return (
@@ -45,12 +51,12 @@ const MovieCard = ({ movie }) => {
               <h1>{movie.release_date}</h1>
             </div>
             <div className="flex justify-between">
-              <h1 className="font-bold text-[1rem]">{movie.title}</h1>
+              <h1 className="font-bold text-[1rem]">{movie.title || movie.name}</h1>
               <img
-                src={isSaved ? save2 : save}
+                src={save}
                 alt="save"
                 className="cursor-pointer"
-                onClick={() => handleSave(movie)}
+                onClick={saveMovies}
               />
             </div>
             <div className="flex gap-2">

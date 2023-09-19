@@ -33,11 +33,11 @@ const Popular = () => {
 
   return (
     <div className="pt-[10vh] ">
-      <h1 className="text-black px-[6rem] text-3xl font-semibold">
+      <h1 className="text-black px-[2rem] lg:px-[4rem] text-3xl font-semibold">
         Popular Movies
       </h1>
       <Pagination />
-      <div className="grid grid-cols-4 gap-[4rem] px-[6rem]">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[4rem] px-[2rem] lg:px-[4rem]">
         {popularMovies.map((movie) => (
           <MovieCard movie={movie} />
         ))}

@@ -21,7 +21,7 @@ const Pagination = () => {
   }, [location, setPage]);
 
   return (
-    <div className="flex gap-3 px-[6rem] items-center mt-[1.5rem]">
+    <div className="flex gap-3 px-[2rem] lg:px-[4rem] items-center mt-[1.5rem]">
       <BsFillArrowLeftCircleFill
         className="text-2xl cursor-pointer"
         onClick={prevPage}
