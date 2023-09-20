@@ -23,7 +23,6 @@ const Popular = () => {
           }
         );
         setPopularMovies(response.data.results);
-        console.log(response.data.results);
       } catch (err) {
         console.error(err);
       }

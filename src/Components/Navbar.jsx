@@ -48,7 +48,7 @@ const Navbar = () => {
   window.addEventListener("scroll", handleNavColor);
   return (
     <div
-      className={`bg-black flex justify-between items-center px-[6rem] h-[8vh] fixed w-[100%] transition-all z-10 ${
+      className={`bg-black flex justify-between items-center px-[3rem] lg:px-[6rem] h-[8vh] fixed w-[100%] transition-all z-10 ${
         navColor ? "bg-black" : ""
       }`}
     >
@@ -107,10 +107,6 @@ const Navbar = () => {
           />
           <CiSearch className="text-2xl cursor-pointer text-white" />
         </form>
-        <Link to="/favorite" className="flex">
-          <img src={heart} alt="" className="w-[70%] cursor-pointer" />
-          <h1 className="text-white">{savedMovies.length}</h1>
-        </Link>
       </ul>
 
       <div className="hiddem lg:flex items-center justify-center gap-5">
@@ -135,12 +131,19 @@ const Navbar = () => {
           <h1 className="text-white">{savedMovies.length}</h1>
         </Link>
       </div>
-      <div className="flex z-10 lg:hidden" onClick={handleNav}>
+      <div
+        className="flex items-center justify-center gap-4 z-10 lg:hidden"
+        onClick={handleNav}
+      >
         {nav ? (
           <HiOutlineX className="text-3xl cursor-pointer text-white" />
         ) : (
           <AiOutlineMenu className="text-3xl cursor-pointer text-white" />
         )}
+        <Link to="/favorite" className="flex">
+          <img src={heart} alt="" className="w-[70%] cursor-pointer" />
+          <h1 className="text-white">{savedMovies.length}</h1>
+        </Link>
       </div>
     </div>
   );

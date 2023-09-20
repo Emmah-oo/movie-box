@@ -25,7 +25,6 @@ const TopRated = () => {
       axios
         .request(options)
         .then(function (response) {
-          console.log(response.data.results);
           setTopRatedMovies(response.data.results);
         })
         .catch(function (error) {

@@ -22,7 +22,7 @@ const Home = () => {
   const [trendingMovie, setTrendingMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { random, baseImageUrl, page } = useContext(MovieContext);
+  const { baseImageUrl, page } = useContext(MovieContext);
 
   const matchingGenres = homeMovie?.genre_ids?.map((genreId) => {
     const matchingGenre = genres.find((genre) => genre.id === genreId);
@@ -50,8 +50,6 @@ const Home = () => {
         );
         setHomeMovie(response.data.results);
         setIsLoading(false);
-        // console.log(homeMovie);
-        // console.log(response.data.results);
       } catch (error) {
         console.error(error);
       }
@@ -75,7 +73,6 @@ const Home = () => {
         );
 
         setTrendingMovie(response.data.results);
-        console.log(response.data.results);
       } catch (error) {
         console.error(error);
       }
@@ -101,21 +98,21 @@ const Home = () => {
         >
           {homeMovie.map((homeMovie, i) => (
             <SwiperSlide key={i}>
-              <div className="w-100% relative home mb-[4vh]">
+              <div className="w-100% relative mb-[4vh]">
                 <img
                   src={`${baseImageUrl}${homeMovie.backdrop_path}`}
                   alt=""
                   className="w-[100%] darkened-image"
                 />
-                <div className="absolute sm:[10%] md:top-[30%] lg:top-[50%] px-[6rem] flex flex-col gap-3 items-start">
-                  <h1 className="text-white font-bold text-[2rem]">
+                <div className="absolute top-[10%] lg:top-[30%] px-[3rem] lg:px-[6rem] flex flex-col gap-3 items-start">
+                  <h1 className="text-white font-bold text-[1rem] md:text-[1.2rem] lg:text-[2rem]">
                     {homeMovie?.title}
                   </h1>
-                  <h1 className="text-[1.5rem] text-white font-medium">
+                  <h1 className="text-[0.8rem] lg:text-[1rem] text-white font-medium">
                     {homeMovie?.release_date}
                   </h1>
-                  <div className="flex gap-2">
-                    <img src={Imdb} alt="" />
+                  <div className="flex gap-2 text-[0.8rem] lg:text-[1rem]">
+                    <img src={Imdb} alt="" className="w-[50%] lg:w-[100%]" />
                     <h1 className="text-white">{homeMovie.vote_average}</h1>
                   </div>
                   <div className="flex gap-2">
@@ -125,7 +122,7 @@ const Home = () => {
                       </h1>
                     ))}
                   </div>
-                  <h1 className="text-white font-medium text-[1rem] max-w-[50%]">
+                  <h1 className="text-white font-medium text-[0.5rem] md:text-[0.8rem] lg:text-[1rem] max-w-[70%]">
                     {homeMovie?.overview}
                   </h1>
                 </div>
@@ -135,7 +132,9 @@ const Home = () => {
         </Swiper>
       )}
 
-      <h1 className="px-[6rem] text-3xl font-semibold">Trending</h1>
+      <h1 className="text-black px-[2rem] lg:px-[4rem] text-3xl font-semibold">
+        Trending
+      </h1>
       <Pagination />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[4rem] px-[2rem] lg:px-[4rem]">
         {trendingMovie &&

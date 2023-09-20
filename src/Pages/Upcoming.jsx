@@ -23,7 +23,6 @@ const Upcoming = () => {
           }
         );
         setUpcomingMovies(response.data.results);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }

@@ -4,7 +4,6 @@ import { genres } from "../Utils/data";
 import Imdb from "../Img/Imdb.svg";
 import { Link } from "react-router-dom";
 import save from "../Img/save.svg";
-import save2 from "../Img/save-2.svg";
 
 const MovieCard = ({ movie }) => {
   const { baseImageUrl, handleSave } = useContext(MovieContext);
@@ -21,7 +20,6 @@ const MovieCard = ({ movie }) => {
     handleSave(movie);
     setIsSaved(!isSaved);
   };
-  // console.log(matchingGenres);
 
   return (
     <div className="mt-[2rem] cursor-pointer hover:scale-105 transition-all">

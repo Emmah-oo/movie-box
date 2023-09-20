@@ -3,13 +3,10 @@ import MovieContext from "../Context/MovieContext";
 import MovieCard from "../Components/MovieCard";
 
 const Favorite = () => {
-  const { isSaved, setIsSaved, savedMovies, setSavedMovies } =
-    useContext(MovieContext);
+  const { savedMovies, setSavedMovies } = useContext(MovieContext);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("savedMovies"));
-
-   
 
     if (items) {
       setSavedMovies(items);

@@ -10,14 +10,14 @@ import Pagination from "../Components/Pagination";
 const SearchPage = () => {
   const [searchResult, setSearchResult] = useState([]);
 
-  const { page } = useContext(MovieContext)
+  const { page } = useContext(MovieContext);
   const { searchTerm } = useParams();
   useEffect(() => {
     const getSearchResult = () => {
       const options = {
         method: "GET",
         url: `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=en-US`,
-        params: { language: "en-US", page},
+        params: { language: "en-US", page },
         headers: {
           accept: "application/json",
           Authorization: process.env.REACT_APP_API_KEY,
@@ -27,7 +27,6 @@ const SearchPage = () => {
       axios
         .request(options)
         .then(function (response) {
-          console.log(response.data.results);
           setSearchResult(response.data.results);
         })
         .catch(function (error) {

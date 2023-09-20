@@ -53,9 +53,7 @@ const TvDetails = () => {
             />
           </div>
           <div>
-            <h1 className="text-2xl font-bold mb-2">
-              {details.name}
-            </h1>
+            <h1 className="text-2xl font-bold mb-2">{details.name}</h1>
             <p className="mb-4">{details.overview}</p>
             <h1>Runtime: {details.runtime} mins</h1>
             <div className="flex gap-2">

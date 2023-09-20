@@ -12,7 +12,6 @@ const MovieDetails = () => {
   const { baseImageUrl } = useContext(MovieContext);
 
   const { movieId } = useParams();
-  console.log(movieId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,20 +41,20 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div className="w-[80%] m-auto">
+    <div className="w-[80%] m-auto pt-[4rem] min-h-screen">
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="grid lg:grid-cols-2 min-h-[70vh] lg:pt-[8rem] items-center justify-center gap-10">
+        <div className="mt-[5rem] grid lg:grid-cols-2 lg:gap-5 items-center justify-center lg:mb-10">
           <div>
             <img
               src={`${baseImageUrl}${details?.backdrop_path}`}
               alt=""
-              className="w-[100%] border rounded-lg md:mt-[5rem] "
+              className="w-[100%] border rounded-lg"
             />
           </div>
           <div className="">
-            <h1 className="text-2xl font-bold mb-2">
+            <h1 className="text-xl font-bold mb-2 mt-2">
               {details.original_title}
             </h1>
             <p className="mb-4">{details.overview}</p>

@@ -12,7 +12,7 @@ const Pagination = () => {
   };
 
   const prevPage = () => {
-    if (page === 1) return
+    if (page === 1) return;
     setPage(page - 1);
   };
   useEffect(() => {
