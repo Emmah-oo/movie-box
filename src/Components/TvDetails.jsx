@@ -40,11 +40,11 @@ const TvDetails = () => {
   }, [tvId]);
 
   return (
-    <div className="w-[80%] m-auto">
+    <div className="w-[80%] m-auto pt-[4rem] min-h-screen">
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-2 min-h-[85vh] items-center justify-center gap-10">
+        <div className="mt-[5rem] grid lg:grid-cols-2 lg:gap-5 items-center justify-center lg:mb-10">
           <div>
             <img
               src={`${baseImageUrl}${details?.backdrop_path}`}
@@ -52,8 +52,10 @@ const TvDetails = () => {
               className="w-[100%] border rounded-lg"
             />
           </div>
-          <div>
-            <h1 className="text-2xl font-bold mb-2">{details.name}</h1>
+          <div className="">
+            <h1 className="text-xl font-bold mb-2 mt-2">
+              {details.name}
+            </h1>
             <p className="mb-4">{details.overview}</p>
             <h1>Runtime: {details.runtime} mins</h1>
             <div className="flex gap-2">
@@ -74,9 +76,9 @@ const TvDetails = () => {
         </div>
       )}
 
-      <div>
+      <div className="pt-5">
         <h1 className="text-3xl font-bold">Similar Movies</h1>
-        <div className="grid grid-cols-4 gap-x-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-[4rem]">
           {similar.map((movie, i) => (
             <MovieCard movie={movie} key={i} />
           ))}
